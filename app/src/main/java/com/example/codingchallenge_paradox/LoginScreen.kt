@@ -28,9 +28,8 @@ class LoginScreen : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_login_screen, container, false)
-
-
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_login_screen, container, false)
         val dao = context?.let { UserDatabase.getInstance(it).userDAO }
         val repository = dao?.let { UserRepository(it) }
         val factory = repository?.let { UserViewModelFactory(it) }
@@ -56,7 +55,7 @@ class LoginScreen : Fragment() {
         return binding.root
     }
 
-    private fun displaySubscribersList(){
+    private fun displaySubscribersList() {
         activity?.let {
             viewModel.users.observe(it, Observer {
                 val subscribers: List<User> = it
@@ -67,16 +66,23 @@ class LoginScreen : Fragment() {
             viewModel.checkUsers.observe(it, Observer {
                 val subscribers: List<User> = it
                 var userContains = false
-                for(subs in subscribers){
-                    if (subs.name.equals(viewModel.inputName.value) && subs.password.equals(viewModel.inputPassword.value)) {
+                for (subs in subscribers) {
+                    if (subs.name.equals(viewModel.inputName.value) && subs.password.equals(
+                            viewModel.inputPassword.value
+                        )
+                    ) {
                         userContains = true
                     }
                 }
 
                 if (userContains) {
                     Toast.makeText(context, "Login Successfull", Toast.LENGTH_LONG).show()
-                    val bundleUserName = bundleOf("input_name" to binding.usernameText.text.toString())
-                    findNavController().navigate(R.id.action_loginScreen_to_homeScreen2,bundleUserName)
+                    val bundleUserName =
+                        bundleOf("input_name" to binding.usernameText.text.toString())
+                    findNavController().navigate(
+                        R.id.action_loginScreen_to_homeScreen2,
+                        bundleUserName
+                    )
                 } else {
                     Toast.makeText(context, "Invalid Credentials", Toast.LENGTH_LONG).show()
                 }

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="myViewModel"
             type="com.example.codingchallenge_paradox.UserViewModel" />
@@ -75,15 +75,14 @@
             android:id="@+id/button_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:title="SIGN UP"
+            android:layout_marginBottom="20dp"
+            android:foreground="?attr/selectableItemBackground"
             app:icon="@mipmap/ic_launcher"
-            app:subtitle="Signup to login"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2"
-            android:foreground="?attr/selectableItemBackground"
-            />
+            app:subtitle="Signup to login"
+            app:title="SIGN UP" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

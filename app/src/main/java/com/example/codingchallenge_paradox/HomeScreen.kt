@@ -42,28 +42,23 @@ class HomeScreen : Fragment() {
 
     override fun onPause() {
         super.onPause()
-
-        if (!isActive) {
-            Handler(Looper.getMainLooper()).postDelayed({
-                lifecycleScope.launchWhenResumed {
-                    findNavController().navigate(R.id.action_homeScreen_to_loginScreen)
-                    isActive = true
-                }
-            }, 10000)
-
-        }
+        Handler(Looper.getMainLooper()).postDelayed({
+            lifecycleScope.launchWhenResumed {
+                findNavController().navigate(R.id.action_homeScreen_to_loginScreen)
+            }
+            isActive = true
+        }, 10000)
     }
 
     override fun onResume() {
         super.onResume()
-        if (isActive) {
+        if (!isActive) {
             Handler(Looper.getMainLooper()).postDelayed({
                 val startDestination = findNavController().graph.startDestination
                 val navOptions = NavOptions.Builder()
                     .setPopUpTo(startDestination, true)
                     .build()
                 findNavController().navigate(startDestination, null, navOptions)
-                isActive = false
 
             }, 30000)
         }

@@ -31,8 +31,8 @@ class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
         val name: String = inputName.value.toString()
         val password: String = inputPassword.value.toString()
 
-        if (!name.equals("null") && name.length>2) {
-            if (!password.equals("null") && password.length>5) {
+        if (!name.equals("null") && name.length > 2) {
+            if (!password.equals("null") && password.length > 5) {
                 checkUsers.postValue(users.value)
             } else {
                 showToastMessage.postValue("Password should not be less than 5 characters")
@@ -48,10 +48,9 @@ class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
         val fullName: String = inputfullName.value.toString()
         insert(User(0, fullName, name, password))
 
-        if (!fullName.equals("null") && fullName.length>5)
-        {
-            if (!name.equals("null") && name.length>2) {
-                if (!password.equals("null") && password.length>5) {
+        if (!fullName.equals("null") && fullName.length > 5) {
+            if (!name.equals("null") && name.length > 2) {
+                if (!password.equals("null") && password.length > 5) {
                     checkRegistrationInfo.postValue(users.value)
                 } else {
                     showToastMessage.postValue("Password should not be less than 5 characters")
@@ -59,8 +58,7 @@ class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
             } else {
                 showToastMessage.postValue("User name should not be empty")
             }
-        }else
-        {
+        } else {
             showToastMessage.postValue("Full name should not be empty")
         }
     }

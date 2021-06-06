@@ -28,8 +28,8 @@ class SignupScreen : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_signup_screen,container,false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_signup_screen, container, false)
 
         val dao = context?.let { UserDatabase.getInstance(it).userDAO }
         val repository = dao?.let { UserRepository(it) }
@@ -48,7 +48,7 @@ class SignupScreen : Fragment() {
                 }
             })
         }
-        return  binding.root
+        return binding.root
     }
 
     private fun registerUser() {
@@ -57,11 +57,13 @@ class SignupScreen : Fragment() {
 
             })
         }
-
         activity?.let {
             viewModel.checkRegistrationInfo.observe(it, Observer {
                 val bundleUserName = bundleOf("input_name" to binding.textUsername.text.toString())
-                findNavController().navigate(R.id.action_signupScreen_to_homeScreen2, bundleUserName)
+                findNavController().navigate(
+                    R.id.action_signupScreen_to_homeScreen2,
+                    bundleUserName
+                )
                 Toast.makeText(context, "Registration Successfull", Toast.LENGTH_LONG).show()
             })
         }

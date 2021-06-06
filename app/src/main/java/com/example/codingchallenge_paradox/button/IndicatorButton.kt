@@ -23,9 +23,8 @@ open class IndicatorButton @JvmOverloads constructor(
         context.theme.obtainStyledAttributes(attrs, R.styleable.IndicatorButton, 0, 0).use {
             imageView.setImageDrawable(it.getDrawable(R.styleable.IndicatorButton_icon))
             main_text.text = it.getText(R.styleable.IndicatorButton_title)
-            textView3.text = it.getText(R.styleable.IndicatorButton_subtitle)
+            sub_text.text = it.getText(R.styleable.IndicatorButton_subtitle)
         }
-
         isClickable = true
         isFocusable = true
     }
