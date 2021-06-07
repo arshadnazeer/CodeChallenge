@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -20,22 +21,21 @@ import java.util.*
 class HomeScreen : Fragment() {
 
     private lateinit var binding: FragmentHomeScreenBinding
-    var isActive = false
+    var isActiveSession = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home_screen, container, false)
         binding.buttonLogout.setOnClickListener {
-
-            //using Nav controller to traverse from one screen to another
             it.findNavController().navigate(R.id.action_homeScreen_to_loginScreen)
+            Toast.makeText(activity, "Logged out!", Toast.LENGTH_LONG).show()
+
         }
 
         val inputUserName = requireArguments().getString("input_name")
-        binding.textView.text = "Welcome <${inputUserName.toString()}>"
+        binding.textView.text = "Welcome ${inputUserName.toString()}"
         return binding.root
     }
 
@@ -44,21 +44,30 @@ class HomeScreen : Fragment() {
         super.onPause()
         Handler(Looper.getMainLooper()).postDelayed({
             lifecycleScope.launchWhenResumed {
-                findNavController().navigate(R.id.action_homeScreen_to_loginScreen)
-            }
-            isActive = true
-        }, 10000)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        if (!isActive) {
-            Handler(Looper.getMainLooper()).postDelayed({
                 val startDestination = findNavController().graph.startDestination
                 val navOptions = NavOptions.Builder()
                     .setPopUpTo(startDestination, true)
                     .build()
                 findNavController().navigate(startDestination, null, navOptions)
+                Toast.makeText(activity, "Session Expired, Please login", Toast.LENGTH_LONG).show()
+            }
+            isActiveSession = true
+        }, 10000)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (!isActiveSession) {
+            Handler(Looper.getMainLooper()).postDelayed({
+                lifecycleScope.launchWhenResumed {
+                    val startDestination = findNavController().graph.startDestination
+                    val navOptions = NavOptions.Builder()
+                        .setPopUpTo(startDestination, true)
+                        .build()
+                    findNavController().navigate(startDestination, null, navOptions)
+                    Toast.makeText(activity, "Session Expired, Please login", Toast.LENGTH_LONG)
+                        .show()
+                }
 
             }, 30000)
         }

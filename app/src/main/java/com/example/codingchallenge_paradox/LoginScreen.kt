@@ -20,7 +20,6 @@ import com.example.codingchallenge_paradox.db.UserRepository
 
 class LoginScreen : Fragment() {
 
-
     private lateinit var binding: FragmentLoginScreenBinding
     private lateinit var viewModel: UserViewModel
 
@@ -76,7 +75,7 @@ class LoginScreen : Fragment() {
                 }
 
                 if (userContains) {
-                    Toast.makeText(context, "Login Successfull", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, "Login Successful", Toast.LENGTH_LONG).show()
                     val bundleUserName =
                         bundleOf("input_name" to binding.usernameText.text.toString())
                     findNavController().navigate(
@@ -84,7 +83,11 @@ class LoginScreen : Fragment() {
                         bundleUserName
                     )
                 } else {
-                    Toast.makeText(context, "Invalid Credentials", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        context,
+                        "User not registered. Please sign up!",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             })
         }

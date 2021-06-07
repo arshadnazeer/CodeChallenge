@@ -64,7 +64,7 @@ class SignupScreen : Fragment() {
                     R.id.action_signupScreen_to_homeScreen2,
                     bundleUserName
                 )
-                Toast.makeText(context, "Registration Successfull", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Registration Successful", Toast.LENGTH_LONG).show()
             })
         }
 

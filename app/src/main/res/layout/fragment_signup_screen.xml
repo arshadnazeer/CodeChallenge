@@ -78,6 +78,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.758"
+            android:foreground="?attr/selectableItemBackground"
             app:title="REGISTER" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
