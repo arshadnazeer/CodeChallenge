@@ -1,2 +1,3 @@
 rootProject.name = "CodingChallenge_Paradox"
 include ':app'
+include ':buttonmodule'

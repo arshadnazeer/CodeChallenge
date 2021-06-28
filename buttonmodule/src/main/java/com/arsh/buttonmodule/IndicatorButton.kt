@@ -1,13 +1,12 @@
-package com.example.codingchallenge_paradox.button
+package com.arsh.buttonmodule
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
 import androidx.core.content.res.use
 import androidx.core.view.children
-import com.example.codingchallenge_paradox.R
 import kotlinx.android.synthetic.main.button_item.view.*
 
 @Suppress("LeakingThis")
@@ -33,4 +32,5 @@ open class IndicatorButton @JvmOverloads constructor(
         super.setEnabled(enabled)
         children.forEach { it.isEnabled = enabled }
     }
+
 }
