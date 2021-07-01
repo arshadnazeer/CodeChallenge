@@ -1,7 +1,6 @@
 package com.example.codingchallenge_paradox
 
-import android.util.Log
-import androidx.databinding.Bindable
+import android.app.Application
 import androidx.databinding.Observable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -61,5 +60,17 @@ class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
         } else {
             showToastMessage.postValue("Full name should not be empty")
         }
+    }
+
+    fun setUsername(userName: String){
+        inputName.value = userName
+    }
+
+    fun setFullName(fullname: String){
+        inputfullName.value = fullname
+    }
+
+    fun setPassword(password: String){
+        inputPassword.value = password
     }
 }
