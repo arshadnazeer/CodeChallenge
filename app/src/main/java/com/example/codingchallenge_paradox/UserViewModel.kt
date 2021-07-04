@@ -9,7 +9,7 @@ import com.example.codingchallenge_paradox.db.User
 import com.example.codingchallenge_paradox.db.UserRepository
 import kotlinx.coroutines.launch
 
-class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
+open class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
 
     var users = userRepository.allUsers
     val showToastMessage = MutableLiveData<String>()
@@ -26,22 +26,25 @@ class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
         }
     }
 
-    fun login() {
+    fun login(){
         val name: String = inputName.value.toString()
         val password: String = inputPassword.value.toString()
 
         if (!name.equals("null") && name.length > 2) {
             if (!password.equals("null") && password.length > 5) {
                 checkUsers.postValue(users.value)
-            } else {
+            }
+            else {
                 showToastMessage.postValue("Password should not be less than 5 characters")
             }
         } else {
             showToastMessage.postValue("User name should not be empty")
+
         }
+
     }
 
-    fun register() {
+    fun register() : Boolean{
         val name: String = inputName.value.toString()
         val password: String = inputPassword.value.toString()
         val fullName: String = inputfullName.value.toString()
@@ -51,7 +54,9 @@ class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
             if (!name.equals("null") && name.length > 2) {
                 if (!password.equals("null") && password.length > 5) {
                     checkRegistrationInfo.postValue(users.value)
-                } else {
+                    return true
+                }
+                else {
                     showToastMessage.postValue("Password should not be less than 5 characters")
                 }
             } else {
@@ -60,17 +65,6 @@ class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
         } else {
             showToastMessage.postValue("Full name should not be empty")
         }
-    }
-
-    fun setUsername(userName: String){
-        inputName.value = userName
-    }
-
-    fun setFullName(fullname: String){
-        inputfullName.value = fullname
-    }
-
-    fun setPassword(password: String){
-        inputPassword.value = password
+        return false
     }
 }
