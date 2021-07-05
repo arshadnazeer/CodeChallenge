@@ -9,7 +9,7 @@ import com.example.codingchallenge_paradox.db.User
 import com.example.codingchallenge_paradox.db.UserRepository
 import kotlinx.coroutines.launch
 
-open class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
+class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
 
     var users = userRepository.allUsers
     val showToastMessage = MutableLiveData<String>()
@@ -44,7 +44,7 @@ open class UserViewModel(private val userRepository: UserRepository) : ViewModel
 
     }
 
-    fun register() : Boolean{
+    fun register() {
         val name: String = inputName.value.toString()
         val password: String = inputPassword.value.toString()
         val fullName: String = inputfullName.value.toString()
@@ -54,7 +54,6 @@ open class UserViewModel(private val userRepository: UserRepository) : ViewModel
             if (!name.equals("null") && name.length > 2) {
                 if (!password.equals("null") && password.length > 5) {
                     checkRegistrationInfo.postValue(users.value)
-                    return true
                 }
                 else {
                     showToastMessage.postValue("Password should not be less than 5 characters")
@@ -65,6 +64,5 @@ open class UserViewModel(private val userRepository: UserRepository) : ViewModel
         } else {
             showToastMessage.postValue("Full name should not be empty")
         }
-        return false
     }
 }
