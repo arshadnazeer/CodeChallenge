@@ -6,7 +6,7 @@
     <data>
         <variable
             name="myViewModel"
-            type="com.example.codingchallenge_paradox.UserViewModel" />
+            type="com.example.codingchallenge_paradox.viewmodel.UserViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -83,7 +83,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2"
-            app:subtitle="Signup to login"
+            app:subtitle="Signup to register"
             app:title="SIGN UP" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

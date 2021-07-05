@@ -1,4 +1,4 @@
-package com.example.codingchallenge_paradox
+package com.example.codingchallenge_paradox.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

@@ -1,7 +1,5 @@
-package com.example.codingchallenge_paradox
+package com.example.codingchallenge_paradox.viewmodel
 
-import android.app.Application
-import androidx.databinding.Observable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

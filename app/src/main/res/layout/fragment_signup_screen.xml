@@ -9,7 +9,7 @@
 
         <variable
             name="myViewModel"
-            type="com.example.codingchallenge_paradox.UserViewModel" />
+            type="com.example.codingchallenge_paradox.viewmodel.UserViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

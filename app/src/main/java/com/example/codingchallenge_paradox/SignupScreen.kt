@@ -1,7 +1,6 @@
 package com.example.codingchallenge_paradox
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,12 +10,12 @@ import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.codingchallenge_paradox.databinding.FragmentSignupScreenBinding
-import com.example.codingchallenge_paradox.db.User
 import com.example.codingchallenge_paradox.db.UserDatabase
 import com.example.codingchallenge_paradox.db.UserRepository
+import com.example.codingchallenge_paradox.viewmodel.UserViewModel
+import com.example.codingchallenge_paradox.viewmodel.UserViewModelFactory
 
 
 class SignupScreen : Fragment() {
